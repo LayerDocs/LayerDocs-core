@@ -1,0 +1,9 @@
+.page-break {
+  break-before: always;
+}
+
+.layerdocs-plain .page-break,
+.layerdocs-docs .page-break {
+  break-before: avoid;
+  break-after: avoid;
+}

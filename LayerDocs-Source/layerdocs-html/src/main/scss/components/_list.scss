@@ -1,0 +1,41 @@
+.layerdocs {
+  ul, ol {
+    $margin: calc(var(--ld-paragraph-vertical-margin) * var(--ld-list-margin-multiplier));
+    margin-top: $margin;
+    margin-bottom: $margin;
+    padding-left: 20px;
+
+    &:has(> .task-list-item) {
+      padding-left: 0;
+    }
+  }
+
+  li {
+    // Tight
+    --ld-list-item-margin-multiplier: 0.75;
+    $margin: calc(var(--ld-paragraph-vertical-margin) * var(--ld-list-margin-multiplier) * var(--ld-list-item-margin-multiplier));
+    margin-top: $margin;
+    margin-bottom: $margin;
+
+    &:has(p) {
+      // Loose
+      --ld-list-item-margin-multiplier: 1.5;
+    }
+
+    // If a list item has a custom bullet element, the actual content is wrapped in a container
+    &:has(> div:nth-child(2)) {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  // GFM task items
+  .task-list-item {
+    list-style-type: none;
+
+    input[type="checkbox"]:first-child {
+      margin-right: var(--ld-task-checkbox-margin-right);
+      transform: translateY(1px);
+    }
+  }
+}

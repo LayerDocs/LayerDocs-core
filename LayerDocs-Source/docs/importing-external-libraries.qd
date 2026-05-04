@@ -1,0 +1,23 @@
+.docname {Importing external libraries}
+.include {docs}
+
+The **`.include`** function, previously seen in [*Including other LayerDocs files*](including-other-layerdocs-files.qd), can also import external **libraries**.
+
+When you download LayerDocs or build it via `distZip`, the `lib/qd` directory contains utility libraries written in LayerDocs itself.
+
+.filetree
+    - layerdocs
+      - lib
+        - qd
+          - lib.qd
+          - ...
+      - bin
+        - layerdocs.jar
+
+You can import `.qd` files into a LayerDocs project via `.include {name}`, without the file extension.
+
+For example, to import `paper.qd`, use `.include {paper}`.
+
+> Note: Unlike `.include {path}`, this approach only loads declared symbols without appending Markdown content from the file.
+
+> Tip: The default library directory is `<install directory>/lib/qd`. You can override this via the command-line option `-l` or `--libs`.

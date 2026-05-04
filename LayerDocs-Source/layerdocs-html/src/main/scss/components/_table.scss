@@ -1,0 +1,9 @@
+.layerdocs table:not(pre table) {
+  th:not([align]) {
+    text-align: var(--ld-table-default-header-alignment);
+  }
+
+  td:not([align]) {
+    text-align: var(--ld-table-default-cell-alignment);
+  }
+}

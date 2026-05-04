@@ -1,0 +1,22 @@
+package com.layerdocs.core.pipeline.output
+
+/**
+ * Possible types of content an [OutputArtifact] contains.
+ */
+enum class ArtifactType {
+    HTML,
+    CSS,
+    JAVASCRIPT,
+    JSON,
+    PLAIN_TEXT,
+
+    /**
+     * LayerDocs source file (QD)
+     */
+    LAYERDOCS,
+
+    /**
+     * In case the artifact name includes a file extension, the type does not need to be specified.
+     */
+    AUTO,
+}

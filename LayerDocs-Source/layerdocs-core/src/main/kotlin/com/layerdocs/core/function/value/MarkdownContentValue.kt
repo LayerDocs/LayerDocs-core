@@ -1,0 +1,46 @@
+package com.layerdocs.core.function.value
+
+import com.layerdocs.core.ast.InlineMarkdownContent
+import com.layerdocs.core.ast.MarkdownContent
+import com.layerdocs.core.function.expression.visitor.ExpressionVisitor
+
+/**
+ * A sub-AST that contains Markdown nodes. This is usually accepted in 'body' parameters.
+ */
+data class MarkdownContentValue(
+    override val unwrappedValue: MarkdownContent,
+) : InputValue<MarkdownContent>,
+    AdaptableValue<InlineMarkdownContentValue> {
+    override fun <T> accept(visitor: ExpressionVisitor<T>): T = visitor.visit(this)
+
+    /**
+     * @return this content as a [NodeValue], suitable for function outputs
+     */
+    fun asNodeValue(): NodeValue = NodeValue(unwrappedValue)
+
+    /**
+     * Adapts this block-level content to inline content.
+     * Wrapped content is identical, allowing seamless conversion when a function parameter
+     * expects [InlineMarkdownContent] but receives [MarkdownContent].
+     */
+    override fun adapt() = InlineMarkdownContentValue(InlineMarkdownContent(unwrappedValue.children))
+}
+
+/**
+ * @return [this] Markdown content wrapped into a [MarkdownContentValue]
+ */
+fun MarkdownContent.wrappedAsValue() = MarkdownContentValue(this)
+
+/**
+ * A sub-AST that contains Markdown nodes. This is usually accepted in 'body' parameters.
+ */
+data class InlineMarkdownContentValue(
+    override val unwrappedValue: InlineMarkdownContent,
+) : InputValue<InlineMarkdownContent> {
+    override fun <T> accept(visitor: ExpressionVisitor<T>): T = visitor.visit(this)
+
+    /**
+     * @return this content as a [NodeValue], suitable for function outputs
+     */
+    fun asNodeValue(): NodeValue = NodeValue(unwrappedValue)
+}

@@ -1,0 +1,61 @@
+.doclang {English}
+.theme {galactic} layout:{hyperlegible}
+.htmloptions baseurl:{https://layerdocs.com/wiki}
+
+.numbering
+    - example: 1
+
+.html {.read {assets/analytics.html}}
+.css {.read {assets/style.css}}
+
+.var {repourl} {https://github.com/Ahamad/layerdocs}
+
+.function {repolink}
+    content href:
+    .text {.content} url:{.repourl/.href}
+
+.function {docslink}
+    href:
+    .html {<sup><a href="https://layerdocs.com/docs/.href" target="_blank">docs ↗</a></sup>}
+
+.function {example}
+    type? content:
+    .numbered key:{example}
+        num:
+        .box {Example .num} type:{.type::otherwise {tip}}
+            .content
+
+.function {layerdocsoutput}
+    content:
+    .container classname:{layerdocs-output} fullwidth:{yes}
+        .content
+
+.function {exampleoutput}
+    output prelude? type? layerdocscode:
+    .example type:{.type}
+        .if {.prelude::isnone::not}
+            .prelude
+
+        .code lang:{markdown} linenumbers:{no}
+            .layerdocscode
+
+        .container classname:{layerdocs-output} fullwidth:{yes}
+            .output
+
+.function {examplemirror}
+    prelude? type? layerdocscode:
+    .exampleoutput output:{.layerdocscode} prelude:{.prelude} type:{.type} layerdocscode:{.layerdocscode}
+
+.pagemargin {topleft}
+    .row gap:{12px}
+        [![LayerDocs](@/banner-light.svg)](https://layerdocs.com)
+
+        .read {../version.txt}::text classname:{version} url:{.repourl/releases/tag/latest}
+
+.pagemargin {topright}
+    .row
+        [Docs](/docs)
+
+        ---
+
+        [.icon {github}](https://github.com/Ahamad/layerdocs)

@@ -1,0 +1,53 @@
+@use "util/media-queries";
+
+.layerdocs {
+  figure > figcaption,
+  table:not(pre table) > caption {
+    --caption-margin: var(--ld-caption-margin);
+    font-size: var(--ld-caption-font-size);
+    font-style: var(--ld-caption-font-style);
+
+    &.caption-top {
+      margin-bottom: var(--caption-margin);
+    }
+
+    &.caption-bottom {
+      margin-top: var(--caption-margin);
+    }
+  }
+
+  figure > figcaption {
+    &.caption-top {
+      order: 0;
+    }
+
+    &.caption-bottom {
+      order: 2;
+    }
+  }
+
+  table:not(pre table) {
+    &:has(> caption.caption-top) {
+      caption-side: top;
+    }
+
+    &:has(> caption.caption-bottom) {
+      caption-side: bottom;
+    }
+
+    > caption {
+      --caption-margin: calc(var(--ld-caption-margin) + 0.5em);
+      white-space: nowrap;
+      overflow-x: hidden;
+    }
+  }
+}
+
+:is(.layerdocs-plain, .layerdocs-docs) {
+  figure > figcaption,
+  table:not(pre table) > caption {
+    @include media-queries.sm-down {
+      font-size: var(--ld-sm-caption-font-size);
+    }
+  }
+}

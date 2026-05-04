@@ -1,0 +1,22 @@
+.docname {Satu}
+.doctype {plain}
+.doclang {English}
+.theme {paperwhite} layout:{latex}
+
+.docauthors
+  - Satyam
+
+# Satu
+
+Welcome to [LayerDocs](https://github.com/Ahamad/layerdocs)! This is the starting point of your document.
+
+
+- To compile this document, please `cd` to this file's parent directory and run:
+  `layerdocs c main.qd`
+
+- To enable live preview, run:
+  `layerdocs c main.qd -p -w`
+
+For further information and guides, please check out the [official wiki](https://layerdocs.com/wiki).
+
+!(50%)[LayerDocs](image/logo.png)

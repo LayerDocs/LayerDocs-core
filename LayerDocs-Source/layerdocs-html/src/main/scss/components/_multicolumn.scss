@@ -1,0 +1,14 @@
+.layerdocs.multicolumn {
+  // In a multi-column layout, these elements span across all columns.
+  .full-column-span, h1, h2, h3, nav {
+    column-span: all;
+  }
+
+  &.layerdocs-plain > main,
+  &.layerdocs-paged .paged-content-wrapper,
+  &.layerdocs-slides .slides section,
+  &.layerdocs-docs > .content-wrapper > main {
+    column-count: var(--ld-column-count);
+    column-fill: auto;
+  }
+}

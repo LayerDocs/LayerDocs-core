@@ -1,0 +1,209 @@
+@use "components/viewport";
+@use "components/alignment";
+@use "components/page-break";
+@use "components/block";
+@use "components/multicolumn";
+@use "components/heading";
+@use "components/paragraph";
+@use "components/empty";
+@use "components/link";
+@use "components/math";
+@use "components/hr";
+@use "components/list";
+@use "components/table";
+@use "components/caption";
+@use "components/code";
+@use "components/focus";
+@use "components/blockquote";
+@use "components/figure";
+@use "components/mermaid";
+@use "components/filetree";
+@use "components/keybinding";
+@use "components/float";
+@use "components/clip";
+@use "components/box";
+@use "components/size";
+@use "components/collapsible";
+@use "components/container";
+@use "components/stack";
+@use "components/location";
+@use "components/footnote";
+@use "components/toc";
+@use "components/bibliography";
+@use "components/page-margin";
+@use "components/landscape";
+@use "components/paged";
+@use "components/docs";
+@use "components/smooth-scroll";
+@use "components/search.scss";
+@use "components/sidebar";
+
+:root {
+  // LayerDocs's exposed properties
+
+  // Colors
+  --ld-color-scheme: light; // Color scheme: light or dark
+  --ld-background-color: inherit; // Background color
+  --ld-main-color: inherit; // Main text color
+  --ld-main-color-muted: color-mix(in srgb, var(--ld-main-color) 20%, transparent); // Muted main text color
+  --ld-primary-color: var(--ld-main-color); // Primary/accent color
+  --ld-color-on-primary: var(--ld-background-color); // Text color on primary background color
+  --ld-heading-color: var(--ld-main-color); // Heading (titles) color
+  --ld-link-color: inherit; // Link color
+  --ld-nested-navigation-line-color: color-mix(in srgb, var(--ld-primary-color) 20%, transparent); // When expected by the layout theme, sets the color of lines in nested navigation (e.g. ToC)
+  --ld-selected-background-color: color-mix(in srgb, var(--ld-main-color) 5%, transparent); // Background color of selected items over the main background color (e.g. selected search result)
+  --ld-callout-box-header-color: var(--ld-main-color); // Color of the header of callout box headers. This is just a referenceable value and is not used in this global theme
+  --ld-collapsed-text-color: var(--ld-link-color); // Color of expandible text
+  --ld-error-message-collapsed-text-color: rgb(240, 246, 77); // Color of expandible text in error messages
+
+  // Fonts
+  --ld-main-font: inherit;
+  --ld-heading-font: inherit;
+  --ld-box-heading-font: inherit;
+  --ld-main-font-size: 1em;
+  --ld-code-font: monospace;
+  --ld-code-span-font-size: var(--ld-main-font-size);
+  --ld-code-block-font-size: var(--ld-code-span-font-size); // Font size of code blocks in non-slides documents
+  --ld-slides-code-block-font-size: var(--ld-code-block-font-size); // Font size of code blocks in slides documents
+  --ld-sm-code-block-font-size: calc(var(--ld-code-block-font-size) * .8); // Font size of code blocks in small screens
+  --ld-caption-font-size: var(--ld-main-font-size); // Font size of captions
+  --ld-sm-caption-font-size: max(calc(var(--ld-caption-font-size) * .9), 0.8em); // Font size of captions in small screens
+  --ld-caption-font-style: normal; // Font style of captions
+
+  // Localized fonts, which override the base fonts for specific locales (e.g. Chinese, see locale/zh.scss).
+  // Avoid overwriting these elsewhere.
+  --ld-main-localized-font: unset;
+  --ld-heading-localized-font: unset;
+  --ld-code-localized-font: unset;
+
+  // Custom fonts, which override both base and localized fonts.
+  // These are set by the user via the `.font` function. Avoid overwriting these.
+  --ld-main-custom-font: unset;
+  --ld-heading-custom-font: unset;
+  --ld-code-custom-font: unset;
+
+  // Margins
+  --ld-block-margin: 2em; // Margin of block elements
+  --ld-paragraph-vertical-margin: var(--ld-block-margin); // Vertical margin of paragraphs preceded by a paragraph
+  --ld-heading-margin: 40px 0 20px 0; // Margin of headings
+  --ld-task-checkbox-margin-right: 0.9em; // Right margin of checkboxes in GFM task list items
+  --ld-list-margin-multiplier: 0.4; // --ld-paragraph-vertical-margin * this = list vertical margin
+  --ld-caption-margin: 0.4em; // Margin between a caption and its content
+  --ld-box-margin-multiplier: 1.5; // --ld-block-margin * this = box vertical margin
+  --ld-box-content-vertical-padding: 8px; // Vertical padding of box content
+  --ld-nested-navigation-padding-left: 28px; // When expected by the layout theme, padding-left of nested ToC entries
+
+  // Border
+  --ld-page-content-border-width: unset;
+  --ld-page-content-border-color: var(--ld-main-color);
+  --ld-page-content-border-style: unset;
+
+  // Text
+  --ld-line-height: 1.5;
+  --ld-letter-spacing: normal;
+  --ld-paragraph-text-indent: none; // Paragraph indentation (with LaTeX policies)
+
+  // Misc
+  --ld-content-width: 45rem; // Width of the main content area of plain and docs viewports
+  --ld-column-count: unset; // Number of columns for multi-column layout
+
+  // Location labels
+  --ld-heading-label-suffix: ". "; // Suffix for heading labels, such as location numbering (e.g. the last `.` in `1.1. Heading`)
+  --ld-caption-label-suffix: ": "; // Suffix for labels in captions (e.g. the `:` in `Figure 1.1: ...`)
+
+  // Global horizontal alignment of content.
+  // This is applied to all elements in the document.
+  --ld-horizontal-alignment-global: start;
+  // Local horizontal alignment of content.
+  // This is applied only to selected elements in the document (e.g. justification).
+  --ld-horizontal-alignment-local: var(--ld-horizontal-alignment-global);
+  // Horizontal alignment of list items.
+  // Defaults to local alignment, but can be customized separately in case the local alignment is `center`.
+  --ld-horizontal-alignment-list-items: unset;
+
+  // Code
+  --ld-code-line-height: var(--ld-line-height); // Line height of code blocks
+  --ld-code-border-radius: 8px; // Border radius of code blocks
+  --ld-code-line-numbers-padding: 0 0.8em; // Padding of line numbers of code blocks. Vertical padding also defines code line height.
+  --ld-code-line-numbers-opacity: 0.6; // Opacity of line numbers of code blocks
+
+  // Tables
+  --ld-table-default-cell-alignment: initial; // Text alignment of table cells, if not specified
+  --ld-table-default-header-alignment: var(--ld-table-default-cell-alignment); // Text alignment of table header cells, if not specified
+
+  // Quotes
+  --ld-quote-type-label-suffix: ": "; // Suffix for localized quote type labels, e.g. Tip, Note, Warning, ...
+  --ld-quote-attribution-prefix: "— "; // Prefix for quote attributions
+  --ld-quote-foreground-color: var(--ld-main-color);
+  --ld-quote-background-color: color-mix(in srgb, var(--ld-quote-foreground-color) 5%, transparent);
+
+  // Boxes
+  --ld-box-border-radius: 8px;
+  --ld-box-section-padding: 12px 16px; // Padding of box sections (header and content)
+  --ld-box-icon-baseline: 0; // Y offset of icons in box headers
+  --ld-box-header-background-color: unset; // Background color of box headers (if not set, computed from header foreground color)
+
+  // Callout elements
+  --ld-callout-content-foreground-color: var(--ld-color-on-primary);
+  --ld-callout-title-foreground-color: var(--ld-color-on-primary);
+  --ld-callout-background-color: color-mix(in srgb, var(--ld-callout-title-foreground-color) 5%, transparent);
+  // Tip elements
+  --ld-tip-content-foreground-color: var(--ld-main-color);
+  --ld-tip-title-foreground-color: rgb(33, 102, 25);
+  --ld-tip-background-color: color-mix(in srgb, var(--ld-tip-title-foreground-color) 5%, transparent);
+  // Note elements
+  --ld-note-content-foreground-color: var(--ld-main-color);
+  --ld-note-title-foreground-color: rgb(25, 60, 102);
+  --ld-note-background-color: color-mix(in srgb, var(--ld-note-title-foreground-color) 5%, transparent);
+  // Warning elements
+  --ld-warning-content-foreground-color: var(--ld-main-color);
+  --ld-warning-title-foreground-color: rgb(161, 76, 32);
+  --ld-warning-background-color: color-mix(in srgb, var(--ld-warning-title-foreground-color) 5%, transparent);
+  // Important elements
+  --ld-important-content-foreground-color: var(--ld-main-color);
+  --ld-important-title-foreground-color: rgb(145, 34, 34);
+  --ld-important-background-color: color-mix(in srgb, var(--ld-important-title-foreground-color) 5%, transparent);
+  // Error elements
+  --ld-error-content-foreground-color: white;
+  --ld-error-title-foreground-color: white;
+  --ld-error-background-color: rgb(224, 67, 64);
+
+  // Mermaid diagrams
+  --ld-mermaid-node-background-color: var(--ld-primary-color);
+  --ld-mermaid-node-border-color: var(--ld-mermaid-node-text-color);
+  --ld-mermaid-node-border-width: 1px;
+  --ld-mermaid-node-text-color: var(--ld-color-on-primary);
+  --ld-mermaid-node-line-color: var(--ld-main-color);
+  --ld-mermaid-node-filter: none;
+
+  // File tree
+  --ld-file-tree-highlight-color: color-mix(in srgb, var(--ld-link-color) 10%, transparent);
+
+  // Keybinding
+  --ld-kbd-background-color: color-mix(in srgb, var(--ld-main-color-muted) 15%, var(--ld-background-color));
+  --ld-kbd-border-color: color-mix(in srgb, var(--ld-main-color-muted) 90%, var(--ld-main-color));
+
+  // Docs
+  --ld-docs-header-height: 60px;
+  --ld-docs-header-vertical-padding: 12px;
+  --ld-docs-header-background-color: var(--ld-primary-color);
+  --ld-docs-separator-border-color: var(--ld-docs-header-background-color);
+  --ld-docs-search-border-color: var(--ld-docs-separator-border-color);
+  --ld-docs-search-focused-border: var(--ld-primary-color);
+
+  // Do not modify the following properties directly.
+
+  color-scheme: var(--ld-color-scheme);
+
+  // Reveal properties.
+  --r-background-color: var(--ld-background-color);
+  --r-main-color: var(--ld-main-color);
+  --r-heading-color: var(--ld-heading-color);
+  --r-link-color: var(--ld-link-color);
+  --r-main-font: var(--ld-main-font);
+  --r-main-font-size: var(--ld-main-font-size);
+  --r-code-font: var(--ld-code-font);
+  --r-heading-font: var(--ld-heading-font);
+  --r-block-margin: var(--ld-block-margin);
+  --r-heading-margin: var(--ld-heading-margin);
+}

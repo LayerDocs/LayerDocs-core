@@ -1,0 +1,110 @@
+.layerdocs {
+  &.layerdocs-plain .mermaid > svg {
+    min-width: 50%;
+  }
+
+  &.layerdocs-paged {
+    .mermaid > svg {
+      max-height: var(--pagedjs-pagebox-height);
+    }
+
+    figure:has(figcaption) .mermaid > svg {
+      max-height: calc(var(--pagedjs-pagebox-height) - 100px);
+    }
+  }
+
+  &.layerdocs-slides .mermaid {
+    box-shadow: none;
+
+    > svg {
+      max-height: 50vh !important;
+    }
+  }
+
+  .mermaid {
+    &:not([data-processed]) {
+      font-size: 0;
+    }
+
+    // Nodes
+
+    .node path, .actor, rect:not(.legend rect, .plot rect), polygon, circle {
+      &:not(.background) {
+        fill: var(--ld-mermaid-node-background-color) !important;
+        stroke: var(--ld-mermaid-node-border-color) !important;
+        stroke-width: var(--ld-mermaid-node-border-width) !important;
+      }
+    }
+
+    .node, rect:not(.legend rect, .plot rect), polygon {
+      &:not(.background) {
+        filter: var(--ld-mermaid-node-filter);
+      }
+    }
+
+    .legend rect {
+      stroke: var(--ld-mermaid-node-border-color) !important;
+      stroke-width: var(--ld-mermaid-node-border-width) !important;
+    }
+
+    .plot {
+      // Bar chart
+      rect {
+        fill: var(--ld-link-color) !important;
+        opacity: .6;
+      }
+
+      // Bar chart + line chart
+      &:has(path) rect {
+        opacity: .25;
+      }
+
+      // Line
+      path {
+        stroke-width: 3px;
+      }
+
+      .line-plot-0 path {
+        stroke: var(--ld-link-color);
+      }
+    }
+
+    .background {
+      fill: none !important;
+    }
+
+    // Text in nodes
+    .nodeLabel {
+      color: var(--ld-mermaid-node-text-color) !important;
+    }
+
+    // Edge labels
+    .edgeLabel, .edgeLabel p {
+      color: var(--ld-mermaid-node-line-color) !important;
+      background-color: var(--ld-background-color) !important;
+    }
+
+    // Lines
+    .relation, line, path[class^="edge"], :is(.ticks, .axis-line, .axisl-line) path {
+      stroke: var(--ld-mermaid-node-line-color) !important;
+    }
+
+    // Text outside nodes
+    .label text, .legend text, .messageText,
+    .loopText, .loopText tspan, .branchLabel text,
+    .title text, text[class*="TitleText"] {
+      fill: var(--ld-mermaid-node-line-color) !important;
+    }
+
+    .labelBkg {
+      background: none !important;
+    }
+
+    // Line endings
+    defs, .marker {
+      path {
+        stroke: var(--ld-mermaid-node-line-color) !important;
+      }
+    }
+  }
+}

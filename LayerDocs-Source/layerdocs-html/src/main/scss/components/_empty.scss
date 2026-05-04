@@ -1,0 +1,7 @@
+$accept-empty: '[data-accept-empty]';
+
+.layerdocs {
+  p:not(#{$accept-empty}):empty {
+    display: none !important;
+  }
+}

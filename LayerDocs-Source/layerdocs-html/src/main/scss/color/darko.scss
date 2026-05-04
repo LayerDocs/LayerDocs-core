@@ -1,0 +1,74 @@
+@use "highlightjs";
+
+@include highlightjs.theme("atom-one-dark");
+
+:root {
+  --ld-color-scheme: dark;
+  --ld-primary-color: #224A51;
+  --ld-background-color: #242528;
+  --ld-main-color: #DADAEB;
+  --ld-link-color: #5FC7C7;
+  --ld-nested-navigation-line-color: rgba(255, 255, 255, 0.1);
+  --ld-box-header-background-color: rgba(23, 53, 56, 0.35);
+  --ld-callout-background-color: var(--ld-primary-color);
+  --ld-callout-foreground-color: var(--ld-color-on-primary);
+  --ld-tip-background-color: rgb(60, 114, 74);
+  --ld-tip-title-foreground-color: rgb(210, 250, 214);
+  --ld-note-background-color: rgb(52, 79, 117);
+  --ld-note-title-foreground-color: rgb(197, 222, 255);
+  --ld-warning-background-color: rgb(239, 203, 99);
+  --ld-warning-title-foreground-color: #333;
+  --ld-important-title-foreground-color: #FF7373;
+  --ld-color-on-primary: var(--ld-main-color);
+  --ld-mermaid-node-background-color: #ECECFF;
+  --ld-mermaid-node-text-color: var(--ld-background-color);
+  --ld-kbd-background-color: color-mix(in srgb, var(--ld-main-color-muted) 25%, var(--ld-background-color));
+  --ld-kbd-border-color: color-mix(in srgb, var(--ld-main-color-muted) 75%, var(--ld-main-color));
+
+  --ld-docs-header-background-color: #2E3136;
+  --ld-docs-separator-border-color: #393c40;
+  --ld-docs-search-focused-border: var(--ld-link-color);
+}
+
+.layerdocs {
+  hr {
+    opacity: 0.5;
+  }
+
+  pre :has(code) {
+    --shadow-opacity: 0.08;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, var(--shadow-opacity));
+  }
+
+  .layerdocs-slides pre {
+    --shadow-opacity: 0.1;
+  }
+
+  .warning {
+    --ld-box-header-background-color: rgba(0, 0, 0, .1);
+
+    &.box {
+      --ld-warning-content-foreground-color: var(--ld-warning-title-foreground-color);
+    }
+  }
+
+  blockquote.warning {
+    --box-header-foreground-color: var(--ld-warning-background-color);
+  }
+
+  .page-margin-bottom-center {
+    border-color: var(--ld-link-color);
+  }
+
+  .mermaid .plot .line-plot-3 path {
+    stroke: salmon;
+  }
+
+  #search-results {
+    border: 1px solid var(--ld-docs-search-border-color);
+  }
+
+  .search-result-title {
+    color: var(--ld-link-color);
+  }
+}

@@ -1,0 +1,39 @@
+@use "util/location-selectors" as selectors;
+
+.layerdocs {
+  #{selectors.$location-element} {
+    --ld-label-suffix: var(--ld-caption-label-suffix);
+
+    // e.g. "Figure 1.1" instead of "Figure 1.1: " if the caption is empty.
+    &:empty {
+      --ld-label-suffix: "";
+    }
+
+    &::before {
+      content: attr(data-localized-kind) " " attr(data-location) var(--ld-label-suffix);
+    }
+  }
+
+  #{selectors.$location-heading} {
+    // Headings and list items use a different suffix.
+    --ld-label-suffix: var(--ld-heading-label-suffix);
+
+    // Location data in a list item replaces its marker.
+    &:is(li) {
+      list-style-type: none;
+    }
+  }
+
+  #{selectors.$location-math} {
+    // Math formulas display location differently.
+    position: relative;
+
+    &::before {
+      content: attr(data-location);
+      position: absolute;
+      inset-inline-end: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

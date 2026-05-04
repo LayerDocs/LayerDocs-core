@@ -1,0 +1,12 @@
+plugins {
+    kotlin("jvm")
+}
+
+dependencies {
+    testImplementation(kotlin("test"))
+    implementation(project(":layerdocs-core"))
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

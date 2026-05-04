@@ -1,0 +1,7 @@
+// Smooth anchor scrolling
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.layerdocs-plain, .layerdocs-docs) {
+    scroll-behavior: smooth;
+  }
+}

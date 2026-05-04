@@ -1,0 +1,102 @@
+/* Inspired by latex-css https://github.com/vincentdoerig/latex-css */
+
+@use "util/progressive-heading-margins" as *;
+@use "util/progressive-heading-sizes" as *;
+@use "util/latex-tables" as *;
+@use "util/latex-toc" as *;
+@use "../components/util/location-selectors" as location-selectors;
+//noinspection CssUnknownTarget
+@import url('computermodern/index.css');
+//noinspection CssUnknownTarget
+@import url('latinmodern-mono/index.css');
+
+:root {
+  --ld-main-font: 'Computer Modern Serif', sans-serif;
+  --ld-main-font-size: 1rem;
+  --ld-heading-margin: 1.4em 0 1em 0;
+  --ld-code-font: "Latin Modern Mono", monospace;
+  --ld-code-span-font-size: 0.93em;
+  --ld-slides-code-block-font-size: 1.5em;
+  --ld-block-margin: 1.8em;
+  --ld-paragraph-vertical-margin: 1.5em;
+  --ld-line-height: 1.5;
+  --ld-heading-label-suffix: " ";
+  --ld-table-default-cell-alignment: start;
+  --ld-quote-type-label-suffix: ". ";
+  --ld-box-icon-baseline: -0.1em;
+  --ld-mermaid-node-filter: drop-shadow(1px 2px var(--ld-mermaid-node-border-color));
+}
+
+.layerdocs-slides {
+  --ld-horizontal-alignment-global: start;
+}
+
+@page {
+  margin: 0.85in;
+}
+
+.layerdocs {
+  @include progressive-heading-margins;
+  @include progressive-heading-sizes;
+  @include latex-tables;
+  @include latex-toc;
+
+  // Numbering of headings and list items.
+  #{location-selectors.$location-heading}::before {
+    padding-right: 0.85rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: normal;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  blockquote {
+    border-left: 2px solid;
+    padding: 14px 1.5em;
+    font-style: italic;
+
+    .attribution {
+      text-align: end;
+    }
+
+    // Tip, note, warning, ...
+    &[class] {
+      font-style: normal;
+    }
+  }
+
+  .box.callout {
+    border-color: var(--box-header-background-color) !important;
+    border-left: 2px solid;
+    border-radius: 8px 8px 8px 0;
+
+    > .box-content {
+      background-color: var(--ld-background-color);
+    }
+
+    &:not(:has(> header)) {
+      border-top: 16px solid;
+    }
+  }
+
+  .codespan-content {
+    border-radius: 8px;
+    background: none !important;
+
+    .color-preview {
+      margin: 0 0.3em 0 0.4em;
+      border-radius: 3px;
+    }
+  }
+
+  h1#table-of-contents {
+    text-align: start;
+  }
+}
+

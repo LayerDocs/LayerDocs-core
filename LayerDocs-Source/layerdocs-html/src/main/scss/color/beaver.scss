@@ -1,0 +1,62 @@
+/* Beamer's Beaver color theme */
+
+@use "highlightjs";
+
+@include highlightjs.theme("default");
+
+:root {
+  --ld-primary-color: rgb(187, 39, 26);
+  --primary-darker: rgb(149, 29, 18);
+  --secondary: rgb(236, 236, 236);
+  --tertiary: rgb(216, 216, 216);
+
+  --ld-main-color: rgb(10, 10, 10);
+  --ld-background-color: white;
+  --ld-link-color: var(--ld-primary-color);
+  --ld-color-on-primary: var(--ld-background-color);
+  --ld-callout-background-color: rgb(234, 233, 247);
+  --ld-callout-content-foreground-color: var(--ld-main-color);
+  --ld-callout-title-foreground-color: rgb(83, 81, 152);
+  --ld-mermaid-node-background-color: var(--ld-background-color);
+  --ld-mermaid-node-text-color: var(--ld-main-color);
+}
+
+.layerdocs {
+  h1, h2 {
+    color: var(--ld-primary-color) !important;
+  }
+
+  h1:not(.box h1) {
+    background-color: var(--secondary);
+  }
+
+  .box.callout {
+    --ld-box-header-background-color: color-mix(in srgb, var(--ld-callout-title-foreground-color) 7%, var(--ld-callout-background-color));
+
+    .box-content li::marker {
+      color: var(--ld-callout-foreground-color);
+    }
+
+    &:has(.box-content h1) {
+      background-color: var(--secondary);
+    }
+  }
+
+  .color-preview {
+    border-color: var(--secondary) !important;
+  }
+
+  .page-margin-bottom-center > * {
+    background-color: var(--tertiary);
+    color: var(--ld-primary-color);
+
+    &:first-child {
+      background-color: var(--ld-primary-color);
+      color: white;
+    }
+
+    &:nth-child(even) {
+      background-color: var(--secondary);
+    }
+  }
+}

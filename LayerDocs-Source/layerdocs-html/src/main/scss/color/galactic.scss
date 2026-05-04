@@ -1,0 +1,35 @@
+@use "darko";
+
+:root {
+  --ld-primary-color: rgb(178, 199, 255);
+  --ld-main-color: rgb(208, 210, 217);
+  --ld-heading-color: white;
+  --ld-link-color: var(--ld-primary-color);
+  --ld-background-color: rgb(23, 24, 28);
+  --ld-warning-title-foreground-color: var(--ld-warning-background-color);
+  --ld-mermaid-node-background-color: white;
+
+  --ld-docs-header-background-color: rgb(35, 38, 47);
+  --ld-docs-separator-border-color: var(--ld-docs-header-background-color);
+  --ld-docs-search-border-color: rgb(53, 56, 65);
+  --ld-docs-search-focused-border: var(--ld-primary-color);
+}
+
+.layerdocs {
+  .box:not(.error) {
+    background: color-mix(in srgb, var(--box-background-color) 5%, transparent);
+    --ld-box-header-background-color: color-mix(in srgb, var(--box-header-foreground-color) 6%, transparent);
+
+    border-style: solid;
+    border-color: var(--box-header-foreground-color);
+    border-width: 1px 3px 1px 2px;
+
+    &.warning {
+      --ld-warning-content-foreground-color: var(--ld-main-color);
+    }
+  }
+
+  #search-results {
+    --ld-docs-separator-border-color: var(--ld-main-color-muted);
+  }
+}
