@@ -1,7 +1,7 @@
 # LayerDocs
 
 <p align="center">
-  <img src="./LayerDocs-Source/src/main/resources/assets/images/logo.png" width="200" alt="LayerDocs Logo">
+  
 </p>
 
 **LayerDocs** is a versatile Markdown-based typesetting system designed for modularity and depth.
