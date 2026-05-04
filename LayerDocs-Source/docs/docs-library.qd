@@ -58,7 +58,7 @@ The `_setup.qd` file is a good place for project-wide configuration shared acros
     .theme {darko} layout:{minimal}
 
     .pagemargin {topright}
-        [GitHub](https://github.com/Ahamad/layerdocs)
+        [GitHub](https://github.com/SatyamPote/layerdocs)
     ```
 
 ## Navigation file

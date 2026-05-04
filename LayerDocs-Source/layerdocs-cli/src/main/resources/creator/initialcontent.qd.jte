@@ -8,7 +8,7 @@
 
 @endif
 
-Welcome to [LayerDocs](https://github.com/Ahamad/layerdocs)! This is the starting point of your document.
+Welcome to [LayerDocs](https://github.com/SatyamPote/layerdocs)! This is the starting point of your document.
 
 @if(docs)
 ## Compiling

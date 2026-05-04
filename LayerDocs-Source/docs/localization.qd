@@ -14,8 +14,8 @@ LayerDocs's built-in libraries expose localization tables that localize elements
 > Note: The currently supported locales are **Chinese, English, French, German, Italian, Japanese, Polish, Portuguese, Russian, Ukrainian**.
 >
 > Contributions to support new locales are welcome:
-> - [stdlib](https://github.com/Ahamad/layerdocs/blob/main/layerdocs-stdlib/src/main/resources/lib/localization.qd?)
-> - [paperlib](https://github.com/Ahamad/layerdocs/blob/main/layerdocs-libs/src/main/resources/paper.qd?)
+> - [stdlib](https://github.com/SatyamPote/layerdocs/blob/main/layerdocs-stdlib/src/main/resources/lib/localization.qd?)
+> - [paperlib](https://github.com/SatyamPote/layerdocs/blob/main/layerdocs-libs/src/main/resources/paper.qd?)
 
 ## Creating your own localized strings
 

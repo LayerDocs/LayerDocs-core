@@ -8,7 +8,7 @@
 .html {.read {assets/analytics.html}}
 .css {.read {assets/style.css}}
 
-.var {repourl} {https://github.com/Ahamad/layerdocs}
+.var {repourl} {https://github.com/SatyamPote/layerdocs}
 
 .function {repolink}
     content href:
@@ -58,4 +58,4 @@
 
         ---
 
-        [.icon {github}](https://github.com/Ahamad/layerdocs)
+        [.icon {github}](https://github.com/SatyamPote/layerdocs)

@@ -4,7 +4,7 @@
   issue? pr? nextrelease? relatedto?:
   # .docname
 
-  .var {repo} {https://github.com/Ahamad/layerdocs}
+  .var {repo} {https://github.com/SatyamPote/layerdocs}
 
   - **Opened in:** .issue::ifpresent {@lambda .text {#.1} url:{.repo/issues/.1}}
   - **Fixed in:** .pr::ifpresent {@lambda .text {#.1} url:{.repo/pulls/.1}} (next release: .nextrelease)

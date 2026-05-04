@@ -1,5 +1,5 @@
 .docname {LayerDocs Mock}
-.docauthor {Ahamad}
+.docauthor {SatyamPote}
 .doclang {English}
 .pageformat borderbottom:{1px} bordercolor:{grey}
 .include {paper}
@@ -29,7 +29,7 @@
 ---
 
 .abstract
-	Welcome to [LayerDocs](https://github.com/Ahamad)'s mock document.
+	Welcome to [LayerDocs](https://github.com/SatyamPote)'s mock document.
 	This comprehensive document serves as a **detailed reference** guide for all the visual elements that can be featured in a LayerDocs-generated document, and is structured to provide **clear and concise examples** of each.
 	It is designed to be a resource for the interested in creating, refining and testing their own themes. 
 
@@ -48,8 +48,8 @@
 
 .conditionalpagebreak ontype:{slides}
 
-- [LayerDocs on GitHub](https://github.com/Ahamad/layerdocs)
-- [LayerDocs Wiki](https://github.com/Ahamad/layerdocs)
+- [LayerDocs on GitHub](https://github.com/SatyamPote/layerdocs)
+- [LayerDocs Wiki](https://github.com/SatyamPote/layerdocs)
 - Several quotes from this document were taken from [Bob Ross Lipsum](https://www.bobrosslipsum.com)
 
 .tableofcontents

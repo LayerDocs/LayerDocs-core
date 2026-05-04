@@ -1,5 +1,5 @@
 .docname {LayerDocs demo}
-.docauthor {Ahamad}
+.docauthor {SatyamPote}
 .doctype {slides}
 .doclang {English}
 .theme {darko} layout:{minimal}
@@ -10,7 +10,7 @@
 
     **.docname**
 
-    [GitHub](https://github.com/Ahamad/layerdocs)
+    [GitHub](https://github.com/SatyamPote/layerdocs)
 
 
 .column
@@ -119,7 +119,7 @@ Go ahead to discover LayerDocs's capabilities.
 
 # Functions
 
-Call any function from the extensive [standard library](https://github.com/Ahamad/layerdocs/tree/main/layerdocs-stdlib/src/main/kotlin/com/layerdocs/stdlib)
+Call any function from the extensive [standard library](https://github.com/SatyamPote/layerdocs/tree/main/layerdocs-stdlib/src/main/kotlin/com/layerdocs/stdlib)
 from your Markdown code.
 
 ```markdown
@@ -149,7 +149,7 @@ from your Markdown code.
         .column cross:{start}
             .text {**LayerDocs is on GitHub!**} size:{large} variant:{smallcaps}
     
-            https://github.com/Ahamad/layerdocs
+            https://github.com/SatyamPote/layerdocs
 
 ## Multi-file project
 
@@ -246,7 +246,7 @@ from your Markdown code.
     
         ```markdown
         .docname {LayerDocs demo}
-        .docauthor {Ahamad}
+        .docauthor {SatyamPote}
         .doctype {slides}
         .doclang {english}
         ```
@@ -267,7 +267,7 @@ from your Markdown code.
             
             **.docname**
             
-            [GitHub](https://github.com/Ahamad/layerdocs)
+            [GitHub](https://github.com/SatyamPote/layerdocs)
         ```
 
 ## Intuitive error handling
@@ -348,7 +348,7 @@ The LayerDocs flavor introduces new features to the standard Markdown syntax.
 ## Labeled figure
 
 .sourceresult shrinkvertical:{30}
-    !(150x_)[LayerDocs](https://Ahamad.eu/layerdocs/img/icon-light.png "The LayerDocs icon")
+    !(150x_)[LayerDocs](https://SatyamPote.eu/layerdocs/img/icon-light.png "The LayerDocs icon")
 
 ## Color preview
 
@@ -362,10 +362,10 @@ The LayerDocs flavor introduces new features to the standard Markdown syntax.
 # It's a wrap
 
 You've seen the **key features** of LayerDocs - the door to making stunning documents is now open.  
-The project is [open source](https://github.com/Ahamad/layerdocs), still in development and **open to feedback and contributions**!
+The project is [open source](https://github.com/SatyamPote/layerdocs), still in development and **open to feedback and contributions**!
 
 .box
-    The **source code** of this presentation is available [**here**](https://github.com/Ahamad/layerdocs/tree/main/demo).
+    The **source code** of this presentation is available [**here**](https://github.com/SatyamPote/layerdocs/tree/main/demo).
 
 Future plans include tutorials, wikis and docs. But for now, happy coding!
 

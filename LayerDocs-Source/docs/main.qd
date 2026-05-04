@@ -25,6 +25,6 @@ When a topic has particularly relevant documentation, you will find a .docslink 
 ### Other resources
 
 - .repolink {README} {blob/main/README.md#installation} covers installation and getting started.
-- Visit the [Discussions](https://github.com/Ahamad/layerdocs/discussions) page to ask questions and share your creations.
-- The [layerdocs-test](https://github.com/Ahamad/layerdocs/tree/main/layerdocs-test/src/test/kotlin/com/layerdocs/test) module contains complete, working examples that you can use as reference.
+- Visit the [Discussions](https://github.com/SatyamPote/layerdocs/discussions) page to ask questions and share your creations.
+- The [layerdocs-test](https://github.com/SatyamPote/layerdocs/tree/main/layerdocs-test/src/test/kotlin/com/layerdocs/test) module contains complete, working examples that you can use as reference.
 - Since LayerDocs extends CommonMark and GFM, this wiki does not cover standard Markdown syntax. For Markdown basics, see [markdownguide.org](https://www.markdownguide.org/basic-syntax).

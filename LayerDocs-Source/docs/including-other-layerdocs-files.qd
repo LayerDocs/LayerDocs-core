@@ -36,7 +36,7 @@ The parameter accepts a string that represents the **path to the target file**, 
 
 A clean approach with typesetting systems is having a main file that gathers all the different subfiles together. The `.includeall` function, which takes an [Iterable](iterable.qd) of paths, serves as a convenient shorthand for repeated `.include` calls.
 
-The following snippet is from [Mock](https://github.com/Ahamad/layerdocs/blob/main/mock)'s `main.qd` file:
+The following snippet is from [Mock](https://github.com/SatyamPote/layerdocs/blob/main/mock)'s `main.qd` file:
 
 .code lang:{markdown}
     .read {../mock/main.qd} lines:{6..}
@@ -110,7 +110,7 @@ A common use case is putting all setup function calls in a separate file. See th
 > `setup.qd`
 > ```markdown
 > .docname {My document}
-> .docauthor {Ahamad}
+> .docauthor {SatyamPote}
 > .doctype {slides}
 > .doclang {English}
 > .theme {darko} layout:{minimal}

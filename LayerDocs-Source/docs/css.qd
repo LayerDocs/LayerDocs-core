@@ -68,7 +68,7 @@ If you want to *override* LayerDocs's default styles, we recommend using the **`
 
 This function takes a [dictionary](dictionary.qd) of strings, where each item is a `--ld-*` CSS property and its value.
 
-You can find a complete list of available properties in the [global theme source](https://github.com/Ahamad/layerdocs/blob/main/layerdocs-html/src/main/scss/global.scss). Unknown properties are safely ignored.
+You can find a complete list of available properties in the [global theme source](https://github.com/SatyamPote/layerdocs/blob/main/layerdocs-html/src/main/scss/global.scss). Unknown properties are safely ignored.
 
 .example
     ```yaml

@@ -11,7 +11,7 @@ After running **`layerdocs c file.qd -p`**, a webserver will run on port `8089`.
 It may also be changed it via `--server-port <port>`.  
 Combining `-p` with `-w` enables live content reload!
 
-## [Link](https://github.com/Ahamad/layerdocs/)
+## [Link](https://github.com/SatyamPote/layerdocs/)
 
 Did you know [LayerDocs's wiki](https://layerdocs.com/wiki) is a great place to start? Check it out!
 

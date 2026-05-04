@@ -16,7 +16,7 @@ The server exposes the following endpoints:
 
 ## Live preview wrapper
 
-When serving a file through the `/live/:file` endpoint, the server wraps HTML files in a simple [HTML wrapper](https://github.com/Ahamad/layerdocs/tree/main/layerdocs-server/src/main/resources/live-preview/wrapper.html.template) that displays the content of `/:file` in an [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe).
+When serving a file through the `/live/:file` endpoint, the server wraps HTML files in a simple [HTML wrapper](https://github.com/SatyamPote/layerdocs/tree/main/layerdocs-server/src/main/resources/live-preview/wrapper.html.template) that displays the content of `/:file` in an [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe).
 
 Additionally, a small script establishes a persistent WebSocket connection to the `/reload` endpoint. This script listens for reload messages and triggers a reload of the iframe content when it receives one.
 
