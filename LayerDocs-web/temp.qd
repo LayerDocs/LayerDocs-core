@@ -1,0 +1,56 @@
+.doctype {paged}
+
+.docauthors
+    - Satyam
+
+.pagemargin {bottomcenter}
+    .currentpage / .totalpages
+
+.pageformat {left}
+
+.numbering
+    - headings: 1.1
+    - figures: 1.1
+
+.tableofcontents
+
+
+# 🚀 Introduction to Artificial Intelligence
+
+Artificial Intelligence (AI) enables machines to simulate human intelligence such as learning, reasoning, and decision-making.
+
+!(60%)[AI Illustration](images/ai.png "Artificial Intelligence Concept") {#ai-img}
+
+AI is widely used in:
+- Healthcare  
+- Finance  
+- Autonomous Vehicles  
+- Education  
+
+> AI systems rely heavily on data and algorithms.
+
+
+# 🧠 Machine Learning Basics
+
+Machine Learning is a subset of AI that allows systems to learn from data.
+
+## Types of Machine Learning
+
+1. Supervised Learning  
+2. Unsupervised Learning  
+3. Reinforcement Learning  
+
+!(50%)[Machine Learning Workflow](images/ml.png "ML Workflow") {#ml-img}
+
+Machine learning models improve automatically through experience.
+
+### Example Code
+
+```python
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+model.fit(X, y)
+
+prediction = model.predict([[5]])
+print(prediction)

@@ -1,0 +1,192 @@
+/* Inspired by latex-css https://github.com/vincentdoerig/latex-css */
+@import url("computermodern/index.css");
+@import url("latinmodern-mono/index.css");
+:root {
+  --ld-main-font: "Computer Modern Serif", sans-serif;
+  --ld-main-font-size: 1rem;
+  --ld-heading-margin: 1.4em 0 1em 0;
+  --ld-code-font: "Latin Modern Mono", monospace;
+  --ld-code-span-font-size: 0.93em;
+  --ld-slides-code-block-font-size: 1.5em;
+  --ld-block-margin: 1.8em;
+  --ld-paragraph-vertical-margin: 1.5em;
+  --ld-line-height: 1.5;
+  --ld-heading-label-suffix: " ";
+  --ld-table-default-cell-alignment: start;
+  --ld-quote-type-label-suffix: ". ";
+  --ld-box-icon-baseline: -0.1em;
+  --ld-mermaid-node-filter: drop-shadow(1px 2px var(--ld-mermaid-node-border-color));
+}
+
+.layerdocs-slides {
+  --ld-horizontal-alignment-global: start;
+}
+
+@page {
+  margin: 0.85in;
+}
+.layerdocs h1 {
+  line-height: calc(3.25em / var(--h-font-scale, 1.5));
+  margin-bottom: calc(1.625em / var(--h-font-scale, 1.5));
+}
+.layerdocs h2 {
+  line-height: calc(2em / var(--h-font-scale, 1.5));
+  margin-top: calc(3em / var(--h-font-scale, 1.5));
+}
+.layerdocs h3 {
+  margin-top: calc(2.5em / var(--h-font-scale, 1.5));
+}
+.layerdocs h4 {
+  margin-top: calc(2em / var(--h-font-scale, 1.5));
+}
+.layerdocs h5 {
+  margin-top: calc(1.8em / var(--h-font-scale, 1.5));
+}
+.layerdocs h6 {
+  margin-top: calc(2.5rem / var(--h-font-scale, 1.5));
+}
+.layerdocs h3, .layerdocs h4, .layerdocs h5, .layerdocs h6 {
+  line-height: calc(1.625em / var(--h-font-scale, 1.5));
+}
+.layerdocs h1 + h2 {
+  margin-top: calc(1.625em / var(--h-font-scale, 1.5));
+}
+.layerdocs h2 + h3,
+.layerdocs h3 + h4,
+.layerdocs h4 + h5 {
+  margin-top: calc(0.8em / var(--h-font-scale, 1.5));
+}
+.layerdocs h5 + h6 {
+  margin-top: calc(0.8rem / var(--h-font-scale, 1.5));
+}
+.layerdocs h2, .layerdocs h3, .layerdocs h4, .layerdocs h5, .layerdocs h6 {
+  margin-bottom: calc(0.8em / var(--h-font-scale, 1.5));
+}
+.layerdocs h1 {
+  --h-font-scale: 2.5;
+  font-size: 2.5em;
+}
+.layerdocs h2 {
+  --h-font-scale: 1.7;
+  font-size: 1.7em;
+}
+.layerdocs h3 {
+  --h-font-scale: 1.4;
+  font-size: 1.4em;
+}
+.layerdocs h4 {
+  --h-font-scale: 1.2;
+  font-size: 1.2em;
+}
+.layerdocs h5, .layerdocs h6 {
+  --h-font-scale: 1;
+  font-size: 1em;
+}
+.layerdocs pre table {
+  --border-width-thick: 0;
+  --border-width-thin: 0;
+}
+.layerdocs table:not(pre table) {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: auto;
+  max-width: 100%;
+  border-top: 2px solid var(--ld-main-color);
+  border-bottom: 2px solid var(--ld-main-color);
+}
+.layerdocs table:not(pre table) tr > th[scope=col] {
+  border-bottom: 1px solid var(--ld-main-color);
+}
+.layerdocs table:not(pre table) tr > th[scope=row] {
+  border-right: 1px solid var(--ld-main-color);
+}
+.layerdocs table:not(pre table) th, .layerdocs table:not(pre table) td {
+  padding: 0.5rem;
+  line-height: 1.1;
+}
+.layerdocs table:not(pre table) > tbody > tr:first-child th, .layerdocs table:not(pre table) > tbody > tr:first-child td {
+  border-top: 1px solid var(--ld-main-color);
+}
+.layerdocs table:not(pre table) > tbody > tr:last-child th, .layerdocs table:not(pre table) > tbody > tr:last-child td {
+  border-bottom: 1px solid var(--ld-main-color);
+}
+.layerdocs nav a {
+  text-decoration: none;
+}
+.layerdocs nav ul, .layerdocs nav ol {
+  margin: 0;
+  padding-left: 0;
+}
+.layerdocs nav > ul ul, .layerdocs nav > ul ol, .layerdocs nav > ol ul, .layerdocs nav > ol ol {
+  padding-left: 2rem;
+}
+.layerdocs nav > ul > li, .layerdocs nav > ol > li {
+  margin-top: 20px;
+}
+.layerdocs nav > ul > li > a:is(nav[data-role=table-of-contents] a), .layerdocs nav > ol > li > a:is(nav[data-role=table-of-contents] a) {
+  font-weight: bold;
+}
+.layerdocs nav li {
+  margin-top: 7px;
+  list-style-type: none; /* Only numbering-generated bullets are shown */
+}
+.layerdocs nav:is(.layerdocs-docs nav) > ul, .layerdocs nav:is(.layerdocs-docs nav) > ol {
+  margin-left: 0;
+}
+.layerdocs nav:is(.layerdocs-docs nav) > ul ul, .layerdocs nav:is(.layerdocs-docs nav) > ul ol, .layerdocs nav:is(.layerdocs-docs nav) > ol ul, .layerdocs nav:is(.layerdocs-docs nav) > ol ol {
+  padding-left: 1.5rem;
+}
+.layerdocs nav:is(.layerdocs-docs nav) > ul > li, .layerdocs nav:is(.layerdocs-docs nav) > ol > li {
+  margin-top: 4px;
+}
+.layerdocs nav:is(.layerdocs-docs nav) > ul > li a:is(nav[data-role=table-of-contents] a), .layerdocs nav:is(.layerdocs-docs nav) > ol > li a:is(nav[data-role=table-of-contents] a) {
+  font-weight: normal;
+}
+.layerdocs [data-location]:is(h1, h2, h3, h4, h5, h6, li)::before {
+  padding-right: 0.85rem;
+}
+.layerdocs h6 {
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: normal;
+}
+.layerdocs a {
+  text-decoration: underline;
+}
+.layerdocs blockquote {
+  border-left: 2px solid;
+  padding: 14px 1.5em;
+  font-style: italic;
+}
+.layerdocs blockquote .attribution {
+  text-align: end;
+}
+.layerdocs blockquote[class] {
+  font-style: normal;
+}
+.layerdocs .box.callout {
+  border-color: var(--box-header-background-color) !important;
+  border-left: 2px solid;
+  border-radius: 8px 8px 8px 0;
+}
+.layerdocs .box.callout > .box-content {
+  background-color: var(--ld-background-color);
+}
+.layerdocs .box.callout:not(:has(> header)) {
+  border-top: 16px solid;
+}
+.layerdocs .codespan-content {
+  border-radius: 8px;
+  background: none !important;
+}
+.layerdocs .codespan-content .color-preview {
+  margin: 0 0.3em 0 0.4em;
+  border-radius: 3px;
+}
+.layerdocs h1#table-of-contents {
+  text-align: start;
+}
+
+/*# sourceMappingURL=latex.css.map */

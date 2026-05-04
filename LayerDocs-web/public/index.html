@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LayerDocs AI Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Logo -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-layer-group pulse"></i>
+                <span>LayerDocs<span>AI</span></span>
+            </div>
+            <div class="actions">
+                <select id="model-select" class="premium-select">
+                    <option value="">Loading Models...</option>
+                </select>
+                <button id="compile-btn" class="btn btn-primary">
+                    <i class="fas fa-play"></i> Compile
+                </button>
+                <button id="stop-btn" class="btn btn-danger">
+                    <i class="fas fa-stop"></i> Stop AI
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Part 1: Real Code -->
+            <section class="pane code-pane">
+                <div class="pane-header">
+                    <i class="fas fa-code"></i> Real Code
+                </div>
+                <div id="editor-container" class="editor"></div>
+            </section>
+
+            <!-- Part 2: Compiled Code -->
+            <section class="pane preview-pane">
+                <div class="pane-header">
+                    <i class="fas fa-eye"></i> Visualizer
+                </div>
+                <div class="preview-container">
+                    <iframe id="preview-frame" sandbox="allow-scripts"></iframe>
+                    <div id="compiling-overlay" class="hidden">
+                        <div class="loader"></div>
+                        <p>Compiling document...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Part 3: AI Chat -->
+            <section class="pane chat-pane">
+                <div class="pane-header">
+                    <i class="fas fa-comment-dots"></i> AI Studio
+                </div>
+                <div id="chat-messages" class="chat-messages">
+                    <div class="message assistant">
+                        Hello! I can help you write LayerDocs documents. Choose a model above and tell me what you want to create.
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <textarea id="chat-input" placeholder="Type your prompt here... (e.g. 'Write a technical paper about black holes')"></textarea>
+                    <button id="send-btn" class="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Monaco Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0/min/vs/loader.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
