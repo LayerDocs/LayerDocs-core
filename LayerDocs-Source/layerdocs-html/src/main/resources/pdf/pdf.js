@@ -40,25 +40,18 @@ function createArgs() {
     console.log('Connected. Waiting for page to be ready.');
     await page.waitForFunction('window.isReady()');
 
-    const body = await page.$('body');
-
-    // Plain documents render as a single-page PDF, unless they contain explicit page breaks.
-    const hasPageBreaks = await page.$('.page-break') !== null;
-    const isSinglePage = await body.evaluate(bodyElement => bodyElement.classList.contains('layerdocs-plain')) && !hasPageBreaks;
-    
-    const singlePageHeightPadding = 100;
-    const singlePageHeightMultiplier = 1.03;
-
     const pdfOptions = {
         path: outputFile,
         printBackground: true,
         preferCSSPageSize: true,
+        format: 'A4',
+        margin: {
+            top: '20mm',
+            bottom: '20mm',
+            left: '20mm',
+            right: '20mm'
+        },
         timeout: 0,
-        ...(
-            isSinglePage
-                ? {height: (await getClientHeight(body)) * singlePageHeightMultiplier + singlePageHeightPadding + 'px'}
-                : {format: 'A4'}
-        ),
     };
     await page.pdf(pdfOptions);
 
