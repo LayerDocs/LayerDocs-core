@@ -13,6 +13,7 @@ import com.layerdocs.core.ast.base.TextNode
 import com.layerdocs.core.ast.base.block.BlockQuote
 import com.layerdocs.core.ast.base.block.Code
 import com.layerdocs.core.ast.base.block.Heading
+import com.layerdocs.core.ast.base.block.HorizontalRule
 import com.layerdocs.core.ast.base.block.Paragraph
 import com.layerdocs.core.ast.base.block.Table
 import com.layerdocs.core.ast.base.block.isMarker
@@ -187,6 +188,12 @@ class LayerDocsHtmlNodeRenderer(
         tagBuilder("div")
             .className("page-break")
             .hidden()
+            .build()
+
+    override fun visit(node: HorizontalRule) =
+        tagBuilder("hr")
+            .className("page-break")
+            .void(true)
             .build()
 
     override fun visit(node: Math) =

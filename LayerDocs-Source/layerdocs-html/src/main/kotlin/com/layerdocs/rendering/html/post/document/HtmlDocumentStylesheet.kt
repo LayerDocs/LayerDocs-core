@@ -50,6 +50,10 @@ class HtmlDocumentStylesheet(
                 "--ld-code-custom-font" value codeFontFamily()
                 "--ld-main-font-size" value fontSizeCss()
             }
+
+            rule(".page-break") {
+                "break-before" value "page"
+            }
         }
 
     private fun buildParagraphStyle(paragraphStyle: ParagraphStyleInfo): String =
