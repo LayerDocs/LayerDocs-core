@@ -55,7 +55,7 @@ function createArgs() {
         ...(
             isSinglePage
                 ? {height: (await getClientHeight(body)) * singlePageHeightMultiplier + singlePageHeightPadding + 'px'}
-                : {}
+                : {format: 'A4'}
         ),
     };
     await page.pdf(pdfOptions);
