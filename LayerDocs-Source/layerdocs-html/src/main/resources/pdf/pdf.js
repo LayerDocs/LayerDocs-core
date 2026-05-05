@@ -42,9 +42,11 @@ function createArgs() {
 
     const body = await page.$('body');
 
-    // Plain documents render as a single-page PDF.
-    const isSinglePage = await body.evaluate(bodyElement => bodyElement.classList.contains('layerdocs-plain'));
-    const singlePageHeightPadding = 100; // Additional height added to single-page PDFs. If not enough, an additional page will be incorrectly generated.
+    // Plain documents render as a single-page PDF, unless they contain explicit page breaks.
+    const hasPageBreaks = await page.$('.page-break') !== null;
+    const isSinglePage = await body.evaluate(bodyElement => bodyElement.classList.contains('layerdocs-plain')) && !hasPageBreaks;
+    
+    const singlePageHeightPadding = 100;
     const singlePageHeightMultiplier = 1.03;
 
     const pdfOptions = {
