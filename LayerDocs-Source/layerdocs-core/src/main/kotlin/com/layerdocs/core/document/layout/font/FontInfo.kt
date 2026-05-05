@@ -1,6 +1,6 @@
 package com.layerdocs.core.document.layout.font
 
-import com.layerdocs.amber.annotations.Mergeable
+import com.quarkdown.amber.annotations.Mergeable
 import com.layerdocs.core.document.size.Size
 import com.layerdocs.core.misc.font.FontFamily
 

@@ -1,6 +1,6 @@
 package com.layerdocs.core.document.layout.page
 
-import com.layerdocs.amber.annotations.Mergeable
+import com.quarkdown.amber.annotations.Mergeable
 import com.layerdocs.core.ast.layerdocs.block.Container
 import com.layerdocs.core.document.size.Size
 import com.layerdocs.core.document.size.Sizes

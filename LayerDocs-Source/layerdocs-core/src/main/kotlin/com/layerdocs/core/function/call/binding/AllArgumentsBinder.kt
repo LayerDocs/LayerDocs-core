@@ -26,7 +26,8 @@ class AllArgumentsBinder(
                 InjectedArgumentsBinder(call).createBindings(injected)
 
         // If mandatory params count > args count.
-        if (call.function.parameters.any { !it.isOptional && it !in bindings }) {
+        val missingMandatory = call.function.parameters.filter { !it.isOptional && !it.isInjected && it !in bindings }
+        if (missingMandatory.isNotEmpty()) {
             throw InvalidArgumentCountException(call)
         }
 

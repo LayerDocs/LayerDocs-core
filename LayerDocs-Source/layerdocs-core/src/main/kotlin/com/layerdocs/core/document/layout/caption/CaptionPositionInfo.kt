@@ -1,6 +1,6 @@
 package com.layerdocs.core.document.layout.caption
 
-import com.layerdocs.amber.annotations.Mergeable
+import com.quarkdown.amber.annotations.Mergeable
 
 /**
  * Immutable information about the position of captions of [com.layerdocs.core.ast.layerdocs.CaptionableNode] nodes in a document.

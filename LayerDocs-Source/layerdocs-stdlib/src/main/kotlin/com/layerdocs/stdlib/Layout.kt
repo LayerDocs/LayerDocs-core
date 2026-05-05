@@ -203,8 +203,8 @@ private fun stack(
     crossAxisAlignment: Stacked.CrossAxisAlignment = Stacked.CrossAxisAlignment.CENTER,
     rowGap: Size? = null,
     columnGap: Size? = null,
-    body: MarkdownContent,
-) = Stacked(layout, mainAxisAlignment, crossAxisAlignment, rowGap, columnGap, body.children).wrappedAsValue()
+    body: MarkdownContent? = null,
+) = Stacked(layout, mainAxisAlignment, crossAxisAlignment, rowGap, columnGap, body?.children ?: emptyList()).wrappedAsValue()
 
 /**
  * Stacks content horizontally.
@@ -263,7 +263,7 @@ fun grid(
     @LikelyNamed gap: Size? = null,
     @Name("vgap") rowGap: Size? = gap,
     @Name("hgap") columnGap: Size? = gap,
-    @LikelyBody body: MarkdownContent,
+    @LikelyBody body: MarkdownContent? = null,
 ) = when {
     columnCount <= 0 -> throw IllegalArgumentException("Column count must be at least 1")
     else -> stack(Stacked.Grid(columnCount), mainAxisAlignment, crossAxisAlignment, rowGap ?: gap, columnGap ?: gap, body)
@@ -346,7 +346,7 @@ fun box(
     @LikelyNamed padding: Size? = null,
     @Name("background") backgroundColor: Color? = null,
     @Name("foreground") foregroundColor: Color? = null,
-    @LikelyBody body: MarkdownContent,
+    @LikelyBody body: MarkdownContent? = null,
 ): NodeValue {
     // Localizes the title according to the box type,
     // if the title is not manually set.
@@ -361,7 +361,7 @@ fun box(
         padding,
         backgroundColor,
         foregroundColor,
-        body.children,
+        body?.children ?: emptyList(),
     ).wrappedAsValue()
 }
 

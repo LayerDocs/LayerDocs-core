@@ -1,6 +1,6 @@
 package com.layerdocs.core.document.numbering
 
-import com.layerdocs.amber.annotations.Mergeable
+import com.quarkdown.amber.annotations.Mergeable
 import com.layerdocs.core.ast.Node
 import com.layerdocs.core.ast.base.block.FootnoteDefinition
 import com.layerdocs.core.ast.base.block.Heading

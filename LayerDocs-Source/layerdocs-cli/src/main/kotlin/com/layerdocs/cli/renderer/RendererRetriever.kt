@@ -13,6 +13,7 @@ import com.layerdocs.rendering.plaintext.extension.plainText
 private const val HTML = "html"
 private const val HTML_PDF = "html-pdf"
 private const val PLAIN_TEXT = "text"
+private const val SLIDES = "slides"
 
 /**
  * Given a [CliOptions] instance, retrieves the appropriate renderer (e.g. HTML, PDF) for the pipeline
@@ -34,7 +35,7 @@ class RendererRetriever(
         { factory, context ->
             when {
                 isHtmlPdf() -> factory.htmlPdf(context, createHtmlPdfExportOptions(), createHtmlExportOptions())
-                isHtml() -> factory.html(context, createHtmlExportOptions())
+                isHtml() || isSlides() -> factory.html(context, createHtmlExportOptions())
                 isPlainText() -> factory.plainText(context)
                 else -> throw IllegalArgumentException("Unsupported renderer: '${options.rendererName}'")
             }
@@ -45,6 +46,7 @@ class RendererRetriever(
     private fun isHtmlPdf() = name == HTML_PDF || (name == HTML && options.exportPdf)
 
     private fun isPlainText() = name == PLAIN_TEXT
+    private fun isSlides() = name == SLIDES
 
     private fun createHtmlExportOptions() = HtmlExportOptions()
 

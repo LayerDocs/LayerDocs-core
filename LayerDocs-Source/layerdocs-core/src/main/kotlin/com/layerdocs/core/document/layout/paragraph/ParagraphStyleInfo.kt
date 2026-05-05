@@ -1,6 +1,6 @@
 package com.layerdocs.core.document.layout.paragraph
 
-import com.layerdocs.amber.annotations.Mergeable
+import com.quarkdown.amber.annotations.Mergeable
 
 /**
  * Immutable information about the style of paragraphs in a document.

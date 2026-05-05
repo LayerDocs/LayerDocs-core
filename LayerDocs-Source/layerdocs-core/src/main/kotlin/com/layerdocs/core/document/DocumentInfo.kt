@@ -1,6 +1,6 @@
 package com.layerdocs.core.document
 
-import com.layerdocs.amber.annotations.NestedData
+import com.quarkdown.amber.annotations.NestedData
 import com.layerdocs.core.document.layout.DocumentLayoutInfo
 import com.layerdocs.core.document.numbering.DocumentNumbering
 import com.layerdocs.core.document.tex.TexInfo
