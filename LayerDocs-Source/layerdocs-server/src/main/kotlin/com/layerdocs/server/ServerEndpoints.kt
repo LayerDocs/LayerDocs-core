@@ -23,4 +23,11 @@ object ServerEndpoints {
      * Sending a message to this endpoint will trigger a reload in all connected clients.
      */
     const val RELOAD_LIVE_PREVIEW = "/reload"
+
+    /**
+     * Endpoint for cloud compilation.
+     *
+     * Sending LayerDocs source code to this endpoint will return a rendered PDF.
+     */
+    const val COMPILE = "/compile"
 }

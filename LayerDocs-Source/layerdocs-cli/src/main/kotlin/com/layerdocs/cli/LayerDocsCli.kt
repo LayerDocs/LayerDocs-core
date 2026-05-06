@@ -8,6 +8,7 @@ import com.layerdocs.cli.creator.command.CreateProjectCommand
 import com.layerdocs.cli.exec.CompileCommand
 import com.layerdocs.cli.exec.ReplCommand
 import com.layerdocs.cli.lsp.LanguageServerCommand
+import com.layerdocs.cli.server.CloudServerCommand
 import com.layerdocs.cli.server.StartWebServerCommand
 
 /**
@@ -30,6 +31,7 @@ fun main(args: Array<String>) =
             CompileCommand(),
             ReplCommand(),
             StartWebServerCommand(),
+            CloudServerCommand(),
             CreateProjectCommand(),
             LanguageServerCommand(),
         ).main(args)

@@ -7,4 +7,5 @@ layerdocs.egg-info/PKG-INFO
 layerdocs.egg-info/SOURCES.txt
 layerdocs.egg-info/dependency_links.txt
 layerdocs.egg-info/entry_points.txt
+layerdocs.egg-info/requires.txt
 layerdocs.egg-info/top_level.txt

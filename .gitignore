@@ -1,0 +1,18 @@
+# Build outputs
+LayerDocs-Source/build/
+LayerDocs-Source/.gradle/
+LayerDocs-Source/bin/
+LayerDocs-Source/out/
+layerdocs-python/build/
+layerdocs-python/dist/
+layerdocs-python/*.egg-info/
+
+# Rendering outputs
+layerdocs-output/
+
+# Third-party libraries
+lib/node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db

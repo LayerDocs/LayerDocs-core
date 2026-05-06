@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="layerdocs",
-    version="0.2.6",
+    version="0.2.9",
     author="SatyamPote",
     description="A powerful Markdown-based typesetting system.",
     long_description=open("README.md", encoding="utf-8").read(),
@@ -15,6 +15,9 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.6",
+    install_requires=[
+        "requests",
+    ],
     entry_points={
         "console_scripts": [
             "layerdocs=layerdocs.cli:main",

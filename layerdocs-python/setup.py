@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="layerdocs",
-    version="0.2.8",
+    version="0.2.9",
     author="SatyamPote",
     description="A powerful Markdown-based typesetting system.",
     long_description=open("README.md", encoding="utf-8").read(),

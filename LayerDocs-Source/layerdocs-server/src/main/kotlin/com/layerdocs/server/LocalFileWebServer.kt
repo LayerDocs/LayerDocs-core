@@ -1,17 +1,21 @@
 package com.layerdocs.server
 
 import com.layerdocs.interaction.os.OsUtils
+import com.layerdocs.server.endpoints.CompileEndpoint
 import com.layerdocs.server.endpoints.LivePreviewEndpoint
 import com.layerdocs.server.endpoints.ReloadEndpoint
 import com.layerdocs.server.stop.KtorStoppableAdapter
 import com.layerdocs.server.stop.Stoppable
+import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.ServerReady
 import io.ktor.server.application.install
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.http.content.staticFiles
 import io.ktor.server.netty.Netty
 import io.ktor.server.routing.get
+import io.ktor.server.routing.post
 import io.ktor.server.routing.routing
+import io.ktor.server.response.respondText
 import io.ktor.server.websocket.WebSockets
 import io.ktor.server.websocket.pingPeriod
 import io.ktor.server.websocket.timeout
@@ -39,9 +43,11 @@ val SERVER_HOST: String =
  */
 class LocalFileWebServer(
     private val targetFile: File,
+    private val pipelineFactory: (() -> com.layerdocs.core.pipeline.Pipeline)? = null,
 ) : Server {
     private val livePreview = LivePreviewEndpoint(targetFile)
     private val reload = ReloadEndpoint()
+    private val compile = pipelineFactory?.let { CompileEndpoint(it) }
 
     /**
      * Starts the server on [port].
@@ -77,6 +83,11 @@ class LocalFileWebServer(
                 // WebSocket endpoint for reloading live previews.
                 webSocket(ServerEndpoints.RELOAD_LIVE_PREVIEW) {
                     reload.handleRequest(this)
+                }
+
+                // Cloud compilation endpoint.
+                post(ServerEndpoints.COMPILE) {
+                    compile?.handleRequest(call) ?: call.respondText("Cloud compilation is disabled.", status = HttpStatusCode.NotImplemented)
                 }
             }
         }.start(wait = wait)
