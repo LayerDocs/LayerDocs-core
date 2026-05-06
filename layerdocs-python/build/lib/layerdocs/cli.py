@@ -20,10 +20,8 @@ class LayerDocs:
             return "layerdocs"
         
         # 2. DEV CHECK: Look for the local build we just made
+        # This allows us to test local changes without downloading
         dev_path = "C:/Users/Ahamad/Documents/GitHub/LayerDocs/LayerDocs-Source/build/install/layerdocs/bin/layerdocs.bat"
-        if not os.path.exists(dev_path):
-             dev_path = "C:/Users/Ahamad/Documents/GitHub/LayerDocs/LayerDocs-Source/layerdocs-cli/build/install/layerdocs-cli/bin/layerdocs-cli.bat"
-             
         if os.path.exists(dev_path):
             return dev_path
 
