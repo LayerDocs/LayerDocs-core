@@ -33,3 +33,27 @@ def render(source_code, output="output.pdf", combine=True, timeout=300):
     finally:
         if os.path.exists(temp_name):
             os.remove(temp_name)
+
+import requests
+
+def render_cloud(source_code, url="http://localhost:8089", output="output.pdf"):
+    """
+    Renders LayerDocs source code using a remote cloud server.
+    
+    Args:
+        source_code (str): The .dl source code to render.
+        url (str): The URL of the LayerDocs Cloud server.
+        output (str): The output file path.
+    """
+    compile_url = f"{url.rstrip('/')}/compile"
+    try:
+        response = requests.post(compile_url, data=source_code.encode('utf-8'))
+        
+        if response.status_code == 200:
+            with open(output, 'wb') as f:
+                f.write(response.content)
+            print(f"Success! Cloud PDF saved to {output}")
+        else:
+            print(f"Cloud Rendering Error ({response.status_code}): {response.text}")
+    except Exception as e:
+        print(f"Failed to connect to Cloud Server at {url}: {e}")
