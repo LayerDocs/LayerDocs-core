@@ -3,6 +3,8 @@ setup.py
 layerdocs/__init__.py
 layerdocs/__main__.py
 layerdocs/cli.py
+layerdocs/parser.py
+layerdocs/renderer.py
 layerdocs.egg-info/PKG-INFO
 layerdocs.egg-info/SOURCES.txt
 layerdocs.egg-info/dependency_links.txt

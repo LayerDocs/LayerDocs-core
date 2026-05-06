@@ -2,21 +2,21 @@ from setuptools import setup, find_packages
 
 setup(
     name="layerdocs",
-    version="0.2.9",
+    version="0.3.0",
     author="SatyamPote",
-    description="A powerful Markdown-based typesetting system.",
+    description="A lightweight, pure-Python typesetting system for professional PDFs.",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/LayerDocs/LayerDocs-core",
+    url="https://github.com/LayerDocs/layerdocs",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.6",
+    python_requires=">=3.7",
     install_requires=[
-        "requests",
+        "reportlab>=4.0.0",
     ],
     entry_points={
         "console_scripts": [

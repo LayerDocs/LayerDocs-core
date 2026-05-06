@@ -1,15 +1,15 @@
 Metadata-Version: 2.4
 Name: layerdocs
-Version: 0.2.9
-Summary: A powerful Markdown-based typesetting system.
-Home-page: https://github.com/LayerDocs/LayerDocs-core
+Version: 0.3.0
+Summary: A lightweight, pure-Python typesetting system for professional PDFs.
+Home-page: https://github.com/LayerDocs/layerdocs
 Author: SatyamPote
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
-Requires-Python: >=3.6
+Requires-Python: >=3.7
 Description-Content-Type: text/markdown
-Requires-Dist: requests
+Requires-Dist: reportlab>=4.0.0
 Dynamic: author
 Dynamic: classifier
 Dynamic: description
