@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="layerdocs",
-    version="0.3.2",
+    version="0.4.0",
     author="SatyamPote",
     description="A lightweight, pure-Python typesetting system for professional PDFs.",
     long_description=open("README.md", encoding="utf-8").read(),
@@ -17,6 +17,7 @@ setup(
     python_requires=">=3.7",
     install_requires=[
         "reportlab>=4.0.0",
+        "pygments>=2.15.0",
     ],
     entry_points={
         "console_scripts": [
