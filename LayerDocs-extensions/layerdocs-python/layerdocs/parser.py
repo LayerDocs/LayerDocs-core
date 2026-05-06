@@ -11,7 +11,7 @@ class DocElement:
 
 class LayerDocsParser:
     """
-    Enhanced parser for LayerDocs Lite supporting QuarkDown components.
+    Production-grade parser for LayerDocs Lite.
     """
     def __init__(self):
         self.elements = []
@@ -39,38 +39,71 @@ class LayerDocsParser:
                 i += 1
                 continue
                 
-            # 2. Header 1
-            if stripped.startswith("# "):
+            # 2. Headings
+            if stripped.startswith("### "):
                 self.flush_paragraph()
-                self.elements.append(DocElement(type="h1", content=stripped[2:].strip()))
+                self.elements.append(DocElement(type="h3", content=stripped[4:].strip()))
                 i += 1
                 continue
-                
-            # 3. Header 2
             if stripped.startswith("## "):
                 self.flush_paragraph()
                 self.elements.append(DocElement(type="h2", content=stripped[3:].strip()))
                 i += 1
                 continue
+            if stripped.startswith("# "):
+                self.flush_paragraph()
+                self.elements.append(DocElement(type="h1", content=stripped[2:].strip()))
+                i += 1
+                continue
 
-            # 4. Lists (Bullet points)
+            # 3. Lists
+            # Unordered
             if stripped.startswith("* ") or stripped.startswith("- "):
                 self.flush_paragraph()
                 self.elements.append(DocElement(type="list_item", content=stripped[2:].strip()))
                 i += 1
                 continue
+            # Ordered
+            if re.match(r'^\d+\. ', stripped):
+                self.flush_paragraph()
+                content = re.sub(r'^\d+\. ', '', stripped)
+                self.elements.append(DocElement(type="list_item_ordered", content=content.strip()))
+                i += 1
+                continue
 
-            # 5. Callouts / Functions (.box)
+            # 4. Code Blocks (Fenced)
+            if stripped.startswith("```"):
+                self.flush_paragraph()
+                i += 1
+                code_lines = []
+                while i < len(lines) and not lines[i].strip().startswith("```"):
+                    code_lines.append(lines[i])
+                    i += 1
+                self.elements.append(DocElement(type="code_block", content="\n".join(code_lines)))
+                i += 1
+                continue
+
+            # 5. Math Blocks ($$)
+            if stripped.startswith("$$"):
+                self.flush_paragraph()
+                i += 1
+                math_lines = []
+                while i < len(lines) and not lines[i].strip().startswith("$$"):
+                    math_lines.append(lines[i].strip())
+                    i += 1
+                self.elements.append(DocElement(type="math_block", content=" ".join(math_lines)))
+                i += 1
+                continue
+
+            # 6. Callouts (.box)
             if stripped.startswith(".box"):
                 self.flush_paragraph()
-                # Simple regex for .box {Title} type:{tip}
                 title_match = re.search(r'\{(.*?)\}', stripped)
                 type_match = re.search(r'type:\{(.*?)\}', stripped)
                 
                 title = title_match.group(1) if title_match else "Note"
                 box_type = type_match.group(1) if type_match else "note"
                 
-                # Collect indented content
                 body_lines = []
                 i += 1
                 while i < len(lines) and (lines[i].startswith("  ") or not lines[i].strip()):
@@ -84,26 +117,23 @@ class LayerDocsParser:
                 ))
                 continue
 
-            # 6. Tables (Simple pipe tables)
+            # 7. Tables
             if "|" in stripped and i + 1 < len(lines) and "-|-" in lines[i+1]:
                 self.flush_paragraph()
                 rows = []
-                # Header row
                 rows.append([c.strip() for c in stripped.split("|") if c.strip()])
-                i += 2 # Skip separator row
+                i += 2
                 while i < len(lines) and "|" in lines[i]:
                     rows.append([c.strip() for c in lines[i].split("|") if c.strip()])
                     i += 1
                 self.elements.append(DocElement(type="table", attributes={"rows": rows}))
                 continue
 
-            # 7. Empty line
             if not stripped:
                 self.flush_paragraph()
                 i += 1
                 continue
 
-            # 8. Body Text
             self.current_paragraph.append(stripped)
             i += 1
 
