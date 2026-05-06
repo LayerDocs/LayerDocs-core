@@ -28,6 +28,7 @@ data class CliOptions(
     val npmPath: String,
     val exportPdf: Boolean = false,
     val noPdfSandbox: Boolean = false,
+    val combine: Boolean = false,
 ) {
     /**
      * The rendering target to generate the output for.

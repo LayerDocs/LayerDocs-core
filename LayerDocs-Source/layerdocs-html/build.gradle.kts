@@ -12,7 +12,6 @@ plugins {
 dependencies {
     testImplementation(kotlin("test"))
     testImplementation(testFixtures(project(":layerdocs-core")))
-    testImplementation("org.apache.pdfbox:pdfbox:3.0.6")
     implementation(project(":layerdocs-core"))
     implementation(project(":layerdocs-interaction"))
     implementation(project(":layerdocs-server"))
@@ -20,6 +19,7 @@ dependencies {
     implementation(project(":layerdocs-install-layout-navigator"))
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
+    implementation("org.apache.pdfbox:pdfbox:3.0.6")
 }
 
 tasks.compileSass {

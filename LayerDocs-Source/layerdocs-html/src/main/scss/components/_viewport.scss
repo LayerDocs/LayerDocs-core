@@ -228,4 +228,21 @@ body.layerdocs {
       @include content-area-border;
     }
   }
+
+  @include media-queries.print {
+    &.layerdocs-plain,
+    &.layerdocs-docs :is(header, .content-wrapper) {
+      display: block !important;
+    }
+
+    &.layerdocs-plain {
+      margin: 0 !important;
+
+      > main {
+        border: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+  }
 }

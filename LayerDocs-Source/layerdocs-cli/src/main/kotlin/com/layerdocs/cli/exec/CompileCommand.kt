@@ -53,6 +53,14 @@ class CompileCommand : ExecuteCommand("compile") {
         help = "(Unsafe) Disable Chrome sandbox for PDF export",
         envvar = Env.NO_SANDBOX,
     ).flag()
+    
+    /**
+     * Whether to use the "combine" method for PDF export.
+     */
+    private val combine: Boolean by option(
+        "--combine",
+        help = "Use the fragmentation-and-merging method for PDF export"
+    ).flag()
 
     /**
      * Maximum time, in seconds, allowed for the entire execution (pipeline + export) to complete.
@@ -101,6 +109,7 @@ class CompileCommand : ExecuteCommand("compile") {
             pipe = pipe,
             exportPdf = exportPdf,
             noPdfSandbox = noPdfSandbox,
+            combine = combine,
         )
 
     /**

@@ -20,18 +20,20 @@ class PdfHtmlPostRendererDecorator(
     private val options: HtmlPdfExportOptions,
 ) : PostRenderer by postRenderer {
     override fun generateResources(rendered: CharSequence): Set<OutputResource> {
-        val resources = postRenderer.generateResources(rendered)
-
+        val outName = postRenderer.context.subdocument.getOutputFileName(postRenderer.context)
         val tempDirectory =
             kotlin.io.path
                 .createTempDirectory(prefix = "layerdocs-pdf")
                 .toFile()
-
-        val sourcesDirectory: File = OutputResourceGroup("sources", resources).saveTo(tempDirectory)
-        val outName = postRenderer.context.subdocument.getOutputFileName(postRenderer.context)
         val out: File = tempDirectory.resolve("$outName.pdf")
 
-        HtmlPdfExporter(options).export(sourcesDirectory, out)
+        if (options.combine) {
+            FragmentedPdfExporter(postRenderer.context, options, postRenderer::generateResources).export(out)
+        } else {
+            val resources = postRenderer.generateResources(rendered)
+            val sourcesDirectory: File = OutputResourceGroup("sources", resources).saveTo(tempDirectory)
+            HtmlPdfExporter(options).export(sourcesDirectory, out)
+        }
 
         // In order to comply with the pipeline's contract, the output PDF is wrapped in an OutputResource.
         // It is deleted along with its temporary directory, and will be recreated in the output directory

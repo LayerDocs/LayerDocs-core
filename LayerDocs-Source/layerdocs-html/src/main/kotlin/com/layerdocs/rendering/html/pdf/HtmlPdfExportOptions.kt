@@ -13,4 +13,5 @@ data class HtmlPdfExportOptions(
     val nodeJsPath: String,
     val npmPath: String,
     val noSandbox: Boolean = false,
+    val combine: Boolean = false,
 )
