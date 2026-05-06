@@ -68,10 +68,18 @@ class LayerDocs:
 
     def compile(self, file_path, output_dir=None):
         env = os.environ.copy()
-        env["JAVA_OPTS"] = "-Xmx4g"
+        env["JAVA_OPTS"] = "-Xmx2g"
         cmd = [self.cli_path, "c", file_path]
         if output_dir: cmd.extend(["-o", output_dir])
         return subprocess.run(cmd, capture_output=True, text=True, env=env, shell=False)
+
+    def run(self, args):
+        """Runs the CLI with the given arguments."""
+        env = os.environ.copy()
+        env["JAVA_OPTS"] = "-Xmx2g"
+        # Ensure we are not nesting the command name if it's already there
+        cmd = [self.cli_path] + [str(a) for a in args]
+        return subprocess.run(cmd, env=env)
 
 def main():
     ld = LayerDocs()
