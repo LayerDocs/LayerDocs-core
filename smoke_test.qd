@@ -1,0 +1,7 @@
+# Local Success!
+
+If you see this, the LayerDocs engine is running perfectly on your machine.
+
+.box(title='Local Build') {
+    This was compiled using the local JVM engine.
+}
